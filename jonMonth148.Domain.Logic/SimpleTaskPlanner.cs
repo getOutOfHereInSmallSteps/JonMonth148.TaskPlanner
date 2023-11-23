@@ -30,5 +30,44 @@ namespace jonMonth148.Domain.Logic
 
             return string.Compare(firstItem.Title, secondItem.Title, StringComparison.OrdinalIgnoreCase);
         }
+
+        public WorkItem[] CreatePlan()
+        {
+            var allTasks = _workItemsRepository.GetAll();
+
+            var relevantTasks = allTasks.Where(task => !task.IsCompleted).ToArray();
+
+            var sortedTasks = CompareWorkItems(relevantTasks);
+
+            return sortedTasks;
+        }
+
+        public Guid AddWorkItem(WorkItem workItem)
+        {
+            if (workItem == null)
+            {
+                throw new ArgumentNullException(nameof(workItem));
+            }
+
+            return _workItemsRepository.Add(workItem);
+        }
+
+        public bool MarkAsCompleted(Guid id)
+        {
+            var workItem = _workItemsRepository.Get(id);
+
+            if (workItem != null)
+            {
+                workItem.IsCompleted = true;
+                return _workItemsRepository.Update(workItem);
+            }
+
+            return false;
+        }
+
+        public bool RemoveWorkItem(Guid id)
+        {
+            return _workItemsRepository.Remove(id);
+        }
     }
 }

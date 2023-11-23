@@ -12,6 +12,21 @@ namespace JonMonth148.Domain.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public bool isCompleted { get; set; }
+        public Guid id { get; set; }
+
+        public WorkItem Clone()
+        {
+            return new WorkItem {
+                Id = Guid.NewGuid(),
+                CreationDate = this.CreationDate,
+                DueDate = this.DueDate,
+                Priority = this.Priority,
+                Complexity = this.Complexity,
+                Title = this.Title,
+                Description = this.Description,
+                IsCompleted = this.IsCompleted,
+            }  
+        }
 
         public override string toString()
         {

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JonMonth148.DataAccess.Abstractions\JonMonth148.DataAccess.Abstractions.csproj" />
+    <ProjectReference Include="..\jonMonth148.Domain.Logic\jonMonth148.Domain.Logic.csproj" />
+    <ProjectReference Include="..\JonMonth148.Domain.Models\JonMonth148.Domain.Models.csproj" />
+    <ProjectReference Include="..\JonMonth148.TaskPlanner.ConsoleRunner\JonMonth148.TaskPlanner.ConsoleRunner.csproj" />
+  </ItemGroup>
+
+</Project>
